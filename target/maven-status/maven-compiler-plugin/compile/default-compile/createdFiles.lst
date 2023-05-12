@@ -1,3 +1,4 @@
-com/carlca/Logger/Sender/Sender.class
-com/carlca/Logger/Receiver/Receiver.class
-com/carlca/Logger/Receiver/RandomSocketFinder.class
+com/carlca/logger/Sender.class
+com/carlca/logger/LogView.class
+com/carlca/logger/RandomSocketFinder.class
+com/carlca/logger/Receiver.class

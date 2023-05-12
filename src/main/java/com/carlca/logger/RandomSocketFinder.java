@@ -1,4 +1,4 @@
-package com.carlca.Logger.Receiver;
+package com.carlca.logger;
 
 import java.net.*;
 

@@ -1,3 +1,4 @@
-/Users/carlcaulkett/Code/Java/carlca_com/src/main/java/com/carlca/Logger/Sender/Sender.java
-/Users/carlcaulkett/Code/Java/carlca_com/src/main/java/com/carlca/Logger/Receiver/Receiver.java
-/Users/carlcaulkett/Code/Java/carlca_com/src/main/java/com/carlca/Logger/Receiver/RandomSocketFinder.java
+/Users/carlcaulkett/Code/Java/com_carlca/src/main/java/com/carlca/logger/LogView.java
+/Users/carlcaulkett/Code/Java/com_carlca/src/main/java/com/carlca/logger/Receiver.java
+/Users/carlcaulkett/Code/Java/com_carlca/src/main/java/com/carlca/logger/Sender.java
+/Users/carlcaulkett/Code/Java/com_carlca/src/main/java/com/carlca/logger/RandomSocketFinder.java
