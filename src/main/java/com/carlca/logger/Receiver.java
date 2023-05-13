@@ -10,7 +10,7 @@ public class Receiver {
             int port = RandomSocketFinder.findRandomSocket();
             ServerSocket serverSocket = new ServerSocket(port);
             System.out.println("Receiver listening on port " + port);
-            
+
             // handle ctrl/c
             Runtime.getRuntime().addShutdownHook(new Thread(() -> {
                 try {
@@ -19,7 +19,7 @@ public class Receiver {
                     e.printStackTrace();
                 }
             }));
-            
+
             while (!Thread.interrupted()) {
                 Socket socket = serverSocket.accept();
                 InputStream inputStream = socket.getInputStream();
@@ -36,6 +36,3 @@ public class Receiver {
         }
     }
 }
-
-
-
