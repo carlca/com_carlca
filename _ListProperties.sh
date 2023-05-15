@@ -1,3 +1,4 @@
 #!/bin/zsh
-cd ./src/main/java/com/carlca/config
-java ListProperties.java
+cd ./src/main/java
+javac com/carlca/config/ListProperties.java
+java com/carlca/config/ListProperties
