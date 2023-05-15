@@ -3,5 +3,6 @@
 /Users/carlcaulkett/Code/Java/com_carlca/src/main/java/com/carlca/config/ListProperties.java
 /Users/carlcaulkett/Code/Java/com_carlca/src/main/java/com/carlca/logger/Sender.java
 /Users/carlcaulkett/Code/Java/com_carlca/src/main/java/com/carlca/config/PackageName.java
-/Users/carlcaulkett/Code/Java/com_carlca/src/main/java/com/carlca/config/PackageNameHelper.java
 /Users/carlcaulkett/Code/Java/com_carlca/src/main/java/com/carlca/logger/RandomSocketFinder.java
+/Users/carlcaulkett/Code/Java/com_carlca/src/main/java/com/carlca/logger/ConfigUser.java
+/Users/carlcaulkett/Code/Java/com_carlca/src/main/java/com/carlca/config/ConfigFolder.java

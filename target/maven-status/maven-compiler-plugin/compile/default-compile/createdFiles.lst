@@ -5,5 +5,5 @@ com/carlca/config/PackageName$PackageNameNested.class
 com/carlca/logger/RandomSocketFinder.class
 com/carlca/config/ListProperties.class
 com/carlca/config/ConfigFolder.class
+com/carlca/logger/ConfigUser.class
 com/carlca/config/Play.class
-com/carlca/config/ConfigPath.class

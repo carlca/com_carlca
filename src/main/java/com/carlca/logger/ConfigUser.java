@@ -1,12 +1,10 @@
 package com.carlca.logger;
 
-import java.io.IOException;
-import java.net.URI;
 import java.nio.file.*;
 
 import com.carlca.config.*;
 
-public class configUser {
+public class ConfigUser {
 
     public static void main(String[] args) {
         String configRoot = ConfigFolder.getConfigFolderRoot();
