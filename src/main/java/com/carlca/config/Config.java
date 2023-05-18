@@ -1,13 +1,16 @@
 package com.carlca.config;
 
+import com.carlca.utils.ConfigPathException;
 import com.carlca.utils.EmptyAppNameException;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Objects;
 import java.util.Properties;
+import org.json.JSONObject;
 
 public class Config {
 
@@ -27,6 +30,27 @@ public class Config {
         return appName;
     }
 
+    public Integer getLogPort() {
+        try {
+            String content = new String(Files.readAllBytes(this.getConfigPath()), StandardCharsets.UTF_8);
+            JSONObject jsonObject = new JSONObject(content);
+            return jsonObject.getInt("logPort");
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public void setLogPort(Integer logPort) {
+        try {
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("logPort", logPort);
+            Files.write(this.getConfigPath(), jsonObject.toString().getBytes());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public String getConfigFolder() {
         Integer os = getOs();
         Path folder = null;
@@ -42,18 +66,22 @@ public class Config {
         return Objects.toString(folder, "");
     }
 
+    private Path getConfigPath() {
+        String folder = this.getConfigFolder();
+        return Paths.get(folder).resolve("config.json");
+    }
+
     private void InitFolder() {
         if (this.appName.isEmpty()) {
             throw new EmptyAppNameException();
         }
-        String folderPath = this.getConfigFolder();
-        Path folder = Paths.get(folderPath).resolve(this.appName);
+        Path path = Paths.get(this.getConfigFolder());
         try {
-            if (!Files.exists(folder)) {
-                Files.createDirectories(folder);
+            if (!Files.exists(path)) {
+                Files.createDirectories(path);
             }
         } catch (Exception e){
-            throw new
+            throw new ConfigPathException(String.format("Could not construct folder: %s", path));
         }
     }
 

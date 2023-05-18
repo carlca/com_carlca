@@ -82,6 +82,36 @@
                         </arguments>
                     </configuration>
                 </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-shade-plugin</artifactId>
+                    <version>3.3.0</version>
+                    <executions>
+                        <execution>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>shade</goal>
+                            </goals>
+                            <configuration>
+                                <artifactSet>
+                                    <excludes>
+                                        <exclude>com.bitwig:extension-api</exclude>
+                                    </excludes>
+                                </artifactSet>
+                                <filters>
+                                    <filter>
+                                        <!-- Silence overlap warnings -->
+                                        <artifact>*:*</artifact>
+                                        <excludes>
+                                            <exclude>META-INF/*.MF</exclude>
+                                        </excludes>
+                                    </filter>
+                                </filters>
+                                <minimizeJar>true</minimizeJar>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
             </plugins>
         </pluginManagement>
     </build>
@@ -97,6 +127,12 @@
             <id>ListProperties</id>
             <properties>
                 <mainClass>com.carlca.config.ListProperties</mainClass>
+            </properties>
+        </profile>
+        <profile>
+            <id>Receiver</id>
+            <properties>
+                <mainClass>com.carlca.logger.Receiver</mainClass>
             </properties>
         </profile>
     </profiles>

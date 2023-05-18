@@ -2,6 +2,7 @@ package com.carlca.logger;
 
 import java.io.*;
 import java.net.*;
+import com.carlca.config.Config;
 
 public class Receiver {
 
@@ -10,7 +11,8 @@ public class Receiver {
             int port = RandomSocketFinder.findRandomSocket();
             ServerSocket serverSocket = new ServerSocket(port);
             System.out.println("Receiver listening on port " + port);
-
+            Config config = new Config("MidiMix");
+            config.setLogPort(port);
             // handle ctrl/c
             Runtime.getRuntime().addShutdownHook(new Thread(() -> {
                 try {

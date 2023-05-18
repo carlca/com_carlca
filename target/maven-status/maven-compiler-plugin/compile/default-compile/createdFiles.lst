@@ -1,8 +1,10 @@
 com/carlca/utils/ArrayUtils.class
 com/carlca/logger/Sender.class
+com/carlca/utils/ConfigPathException.class
 com/carlca/logger/Receiver.class
 com/carlca/config/Config.class
 com/carlca/utils/EmptyStackTraceException.class
+com/carlca/utils/EmptyAppNameException.class
 com/carlca/logger/RandomSocketFinder.class
 com/carlca/config/ListProperties.class
 com/carlca/utils/NonEmptyStackException.class

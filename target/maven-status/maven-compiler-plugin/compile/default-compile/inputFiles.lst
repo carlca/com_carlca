@@ -5,5 +5,7 @@
 /Users/carlcaulkett/Code/Java/com_carlca/src/main/java/com/carlca/config/ListProperties.java
 /Users/carlcaulkett/Code/Java/com_carlca/src/main/java/com/carlca/utils/NonEmptyStackException.java
 /Users/carlcaulkett/Code/Java/com_carlca/src/main/java/com/carlca/logger/Sender.java
+/Users/carlcaulkett/Code/Java/com_carlca/src/main/java/com/carlca/utils/EmptyAppNameException.java
 /Users/carlcaulkett/Code/Java/com_carlca/src/main/java/com/carlca/logger/RandomSocketFinder.java
 /Users/carlcaulkett/Code/Java/com_carlca/src/main/java/com/carlca/utils/ArrayUtils.java
+/Users/carlcaulkett/Code/Java/com_carlca/src/main/java/com/carlca/utils/ConfigPathException.java
