@@ -1,5 +1,9 @@
 package com.carlca.config;
 
+import com.carlca.utils.EmptyAppNameException;
+
+import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Objects;
@@ -40,9 +44,17 @@ public class Config {
 
     private void InitFolder() {
         if (this.appName.isEmpty()) {
-            throw
+            throw new EmptyAppNameException();
         }
-        String folder = this.getConfigFolder();
+        String folderPath = this.getConfigFolder();
+        Path folder = Paths.get(folderPath).resolve(this.appName);
+        try {
+            if (!Files.exists(folder)) {
+                Files.createDirectories(folder);
+            }
+        } catch (Exception e){
+            throw new
+        }
     }
 
     private Integer getOs() {
