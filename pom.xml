@@ -21,6 +21,11 @@
             <artifactId>javatuples</artifactId>
             <version>1.2</version>
         </dependency>
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20230227</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -61,8 +66,39 @@
                 <plugin>
                     <artifactId>maven-project-info-reports-plugin</artifactId>
                     <version>3.0.0</version>
+
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>exec-maven-plugin</artifactId>
+                    <version>3.0.0</version>
+                    <configuration>
+                        <executable>java</executable>
+                        <arguments>
+                            <argument>-classpath</argument>
+                            <classpath/>
+                            <!--suppress UnresolvedMavenProperty -->
+                            <argument>${mainClass}</argument>-->
+                        </arguments>
+                    </configuration>
                 </plugin>
             </plugins>
         </pluginManagement>
     </build>
+
+    <profiles>
+        <profile>
+            <id>Play</id>
+            <properties>
+                <mainClass>com.carlca.config.Play</mainClass>
+            </properties>
+        </profile>
+        <profile>
+            <id>ListProperties</id>
+            <properties>
+                <mainClass>com.carlca.config.ListProperties</mainClass>
+            </properties>
+        </profile>
+    </profiles>
+
 </project>

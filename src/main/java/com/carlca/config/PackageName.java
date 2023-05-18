@@ -76,4 +76,15 @@ public class PackageName {
         }
         return packageName;
     }
+
+    public static String getShortPackageName() {
+        String shortName = "";
+        String packageName = getPackageName();
+        String[] parts = packageName.split("\\.");
+        if (parts.length > 0) {
+            shortName = parts[parts.length - 1];
+        }
+        return shortName;
+    }
+
 }
