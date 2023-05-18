@@ -6,7 +6,7 @@
     <groupId>com.carlca</groupId>
     <artifactId>carlca</artifactId>
     <version>0.1</version>
-    <name>baeldung</name>
+    <name>carlca</name>
     <url>https://www.example.com</url>
 
     <properties>

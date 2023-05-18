@@ -1,19 +1,29 @@
 package com.carlca.config;
 
-import java.util.Objects;
-import java.util.Properties;
-import java.util.prefs.Preferences;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Objects;
+import java.util.Properties;
 
-public final class ConfigFolder {
+public class Config {
+
+    public Config(String appName) {
+        this.appName = appName;
+        this.InitFolder();
+    }
 
     private static Integer os;
     private static final Integer WINDOWS = 0;
     private static final Integer MACOS = 1;
     private static final Integer LINUX = 2;
 
-    public static String getConfigFolder() {
+    private final String appName;
+
+    public String getAppName() {
+        return appName;
+    }
+
+    public String getConfigFolder() {
         Integer os = getOs();
         Path folder = null;
         Properties props = System.getProperties();
@@ -24,11 +34,18 @@ public final class ConfigFolder {
         } else if (Objects.equals(os, LINUX)) {
             folder = Paths.get((String)props.get("user.home")).resolve(".config");
         }
-        folder = Objects.requireNonNull(folder).resolve(PackageName.getCurrentPackage());
+        folder = Objects.requireNonNull(folder).resolve(this.getAppName());
         return Objects.toString(folder, "");
     }
 
-    private static Integer getOs() {
+    private void InitFolder() {
+        if (this.appName.isEmpty()) {
+            throw
+        }
+        String folder = this.getConfigFolder();
+    }
+
+    private Integer getOs() {
         String osName = System.getProperty("os.name").toLowerCase();
         Integer os;
         if (osName.contains("win")) {
@@ -40,4 +57,5 @@ public final class ConfigFolder {
         }
         return os;
     }
+
 }
