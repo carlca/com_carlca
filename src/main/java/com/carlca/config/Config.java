@@ -10,6 +10,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Objects;
 import java.util.Properties;
+
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class Config {
@@ -31,23 +33,34 @@ public class Config {
     }
 
     public Integer getLogPort() {
-        try {
-            String content = new String(Files.readAllBytes(this.getConfigPath()), StandardCharsets.UTF_8);
-            JSONObject jsonObject = new JSONObject(content);
-            return jsonObject.getInt("logPort");
-        } catch (Exception e){
-            e.printStackTrace();
-        }
-        return null;
+        JSONObject jsonObject = getJsonObject();
+        return jsonObject.getInt("logPort");
     }
 
     public void setLogPort(Integer logPort) {
+        JSONObject jsonObject = getJsonObject();
+        jsonObject.put("logPort", logPort);
+        setJsonObject(jsonObject);
+    }
+
+    private JSONObject getJsonObject() {
         try {
-            JSONObject jsonObject = new JSONObject();
-            jsonObject.put("logPort", logPort);
-            Files.write(this.getConfigPath(), jsonObject.toString().getBytes());
-        } catch (Exception e) {
-            e.printStackTrace();
+            Path path = this.getConfigPath();
+            if (Files.exists(path)) {
+                String content = new String(Files.readAllBytes(path), StandardCharsets.UTF_8);
+                return new JSONObject(content);
+            }
+            return new JSONObject();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void setJsonObject(JSONObject jsonObject) {
+        try {
+            Files.write(this.getConfigPath(), jsonObject.toString(4).getBytes());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 
