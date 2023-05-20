@@ -8,14 +8,35 @@ import com.carlca.utils.Console;
 public class Log {
 
     private static String appName;
-    private static Socket socket;
     private static BufferedWriter writer;
+    static Socket socket;   // Avoiding "Field can be converted to a local variable" message
 
     private Log() {
     }
 
     public static void init(String appName) {
         Log.appName = appName;
+    }
+
+    public static void send(Object msg) {
+        initSockets();
+        sendMessage(msg.toString());
+    }
+
+    public static void send(String msg, Object... args) {
+        initSockets();
+        sendMessage(String.format(msg, args));
+    }
+
+    private static void sendMessage(String msg) {
+        if (writer != null) {
+            try {
+                writer.write(msg + System.lineSeparator());
+                writer.flush();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
 
     private static void initSockets() {
@@ -29,26 +50,6 @@ public class Log {
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
-        }
-    }
-
-    public static void send(String msg, Object... args) {
-        initSockets();
-        if (Console.hasFormattingPlaceholders(msg)) {
-            sendMessage(String.format(msg, args));
-        } else {
-            sendMessage(msg);
-        }
-    }
-
-    private static void sendMessage(String msg) {
-        if (writer != null) {
-            try {
-                writer.write(msg + System.lineSeparator());
-                writer.flush();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
         }
     }
 
