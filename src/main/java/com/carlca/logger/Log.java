@@ -3,7 +3,6 @@ package com.carlca.logger;
 import java.io.*;
 import java.net.*;
 import com.carlca.config.Config;
-import com.carlca.utils.Console;
 
 public class Log {
 
